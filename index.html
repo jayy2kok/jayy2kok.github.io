@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Jayraj Miniyar | Verified Architect Portfolio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25f4c3",
+                        "secondary-gold": "#f0c040",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0a192f",
+                        "surface-dark": "#112240",
+                        "accent-dark": "#1d2d50",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a192f;
+        }
+
+        .blueprint-bg {
+            background-image:
+                linear-gradient(rgba(37, 244, 195, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(37, 244, 195, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .glass-nav {
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(37, 244, 195, 0.1);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 10px rgba(37, 244, 195, 0.3);
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari and Opera */
+        }
+
+        .title-min-h {
+            min-height: 2.5rem;
+        }
+
+        @keyframes scroll-infinite {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-50% - 0.75rem));
+            }
+        }
+
+        .animate-scroll-infinite {
+            animation: scroll-infinite 25s linear infinite;
+        }
+
+        .snap-x::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .snap-x::-webkit-scrollbar-track {
+            background: #112240;
+        }
+
+        .snap-x::-webkit-scrollbar-thumb {
+            background: #25f4c3;
+            border-radius: 4px;
+        }
+
+        .glow-card {
+            position: relative;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .glow-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(37, 244, 195, 0.4);
+            border-color: rgba(37, 244, 195, 0.4) !important;
+        }
+
+        .glow-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            opacity: 0;
+            background: linear-gradient(180deg, #25f4c3, #f0c040);
+            transition: all 0.4s ease;
+            z-index: 10;
+        }
+
+        .glow-card:hover::before {
+            opacity: 1;
+        }
+
+        .endorsement-text {
+            max-height: 180px;
+            overflow: hidden;
+            position: relative;
+            transition: max-height 0.5s ease;
+        }
+
+        .endorsement-text::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(transparent, #1a1f2e);
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .endorsement-card {
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .endorsement-card.expanded {
+            transform: scale(1.05);
+            box-shadow: 0 25px 60px -10px rgba(37, 244, 195, 0.4), 0 0 0 2px rgba(37, 244, 195, 0.5);
+            border-color: rgba(37, 244, 195, 0.5) !important;
+            background: #1e2a3a;
+        }
+
+        .endorsement-card.expanded .endorsement-text {
+            max-height: 800px;
+        }
+
+        .endorsement-card.expanded .endorsement-text::after {
+            opacity: 0;
+        }
+
+        /* Dim sibling cards when one is expanded */
+        .endorsement-grid.has-expanded .endorsement-card:not(.expanded) {
+            opacity: 0.15;
+            filter: blur(1px);
+            transform: scale(0.97);
+        }
+
+        .endorsement-card .click-hint {
+            transition: opacity 0.3s ease;
+        }
+
+        .endorsement-card.expanded .click-hint {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 selection:bg-primary/30 selection:text-primary">
+    <nav class="fixed top-0 w-full z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2 group cursor-pointer">
+                <div
+                    class="h-10 w-10 bg-primary/10 border border-primary/30 rounded flex items-center justify-center text-primary font-bold text-xl group-hover:bg-primary group-hover:text-background-dark transition-all duration-300">
+                    JM
+                </div>
+                <span class="text-slate-100 font-bold tracking-tighter text-lg hidden sm:inline-block">JAYRAJ
+                    MINIYAR</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-medium text-slate-400 hover:text-primary transition-colors"
+                    href="#about">About</a>
+                <a class="text-sm font-medium text-slate-400 hover:text-primary transition-colors"
+                    href="#skills">Skills</a>
+                <a class="text-sm font-medium text-slate-400 hover:text-primary transition-colors"
+                    href="#experience">Experience</a>
+                <a class="text-sm font-medium text-slate-400 hover:text-primary transition-colors"
+                    href="#projects">Projects</a>
+                <a class="px-5 py-2 bg-primary/10 border border-primary text-primary text-sm font-bold rounded hover:bg-primary hover:text-background-dark transition-all duration-300"
+                    href="#contact">
+                    Get In Touch
+                </a>
+            </div>
+            <button class="md:hidden text-primary">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </nav>
+    <main>
+        <section class="relative min-h-screen flex items-center pt-20 blueprint-bg overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-background-dark/50 to-background-dark">
+            </div>
+            <div class="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7">
+                    <p class="text-primary font-mono mb-4 flex items-center gap-2">
+                        <span class="h-[1px] w-12 bg-primary"></span>
+                        Architecting Financial Ecosystems
+                    </p>
+                    <h1 class="text-6xl md:text-8xl font-black text-slate-100 tracking-tight leading-none mb-6">
+                        Jayraj <br /><span class="text-primary">Miniyar.</span>
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-bold text-slate-400 mb-6 max-w-2xl">
+                        Enterprise Architect &amp; Technology Leader
+                    </h2>
+                    <p class="text-lg text-slate-400 max-w-xl leading-relaxed mb-10">
+                        Over 18 years of experience in architecting global financial systems for top-tier investment
+                        banks. Specializing in high-throughput payment processing and scalable API platforms.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a class="px-8 py-4 bg-primary text-background-dark font-bold rounded-lg hover:shadow-[0_0_20px_rgba(37,244,195,0.4)] transition-all flex items-center gap-2"
+                            href="#projects">
+                            View My Work
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                        <a class="px-8 py-4 border-2 border-secondary-gold text-secondary-gold font-bold rounded-lg hover:bg-secondary-gold/10 transition-all flex items-center gap-2"
+                            href="#contact">
+                            Get In Touch
+                            <span class="material-symbols-outlined text-sm">mail</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 hidden lg:block relative">
+                    <div
+                        class="relative w-full aspect-[4/5] rounded-2xl p-2 border border-primary/30 bg-surface-dark/50 backdrop-blur-sm group hover:border-primary transition-all duration-500">
+                        <div
+                            class="absolute -top-4 -right-4 w-24 h-24 border-t-2 border-r-2 border-primary/40 rounded-tr-3xl">
+                        </div>
+                        <div
+                            class="absolute -bottom-4 -left-4 w-24 h-24 border-b-2 border-l-2 border-secondary-gold/40 rounded-bl-3xl">
+                        </div>
+                        <div class="w-full h-full rounded-xl overflow-hidden relative bg-accent-dark">
+                            <img alt="Jayraj Miniyar Portrait"
+                                class="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity duration-500 grayscale hover:grayscale-0"
+                                src="images/jayraj-portrait.png" />
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-60">
+                            </div>
+                            <div
+                                class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-surface-dark/95 to-transparent">
+                                <div class="flex items-end justify-between border-t border-primary/20 pt-4">
+                                    <div>
+                                        <div id="experience-counter" class="text-4xl font-black text-primary mb-1">18+
+                                        </div>
+                                        <div class="text-slate-300 font-medium uppercase tracking-widest text-xs">Years
+                                            Experience</div>
+                                    </div>
+                                    <div class="flex flex-col items-end gap-1">
+                                        <div
+                                            class="flex items-center gap-2 text-slate-300 text-xs font-mono bg-background-dark/50 px-2 py-1 rounded border border-white/5">
+                                            <span
+                                                class="material-symbols-outlined text-secondary-gold text-sm">verified</span>
+                                            <span>TOGAF 9 - Enterprise Architect</span>
+                                        </div>
+                                        <div
+                                            class="flex items-center gap-2 text-slate-300 text-xs font-mono bg-background-dark/50 px-2 py-1 rounded border border-white/5">
+                                            <span
+                                                class="material-symbols-outlined text-secondary-gold text-sm">cloud</span>
+                                            <span>GCP Architect</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-24 bg-background-dark" id="about">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <div class="lg:col-span-1">
+                        <h2 class="text-3xl font-bold text-slate-100 flex items-center gap-4 mb-8">
+                            About Me
+                        </h2>
+                        <div class="space-y-6 text-slate-400 leading-relaxed">
+                            <p>
+                                I am a strategic thinker and technical specialist dedicated to solving complex
+                                architectural challenges in the global banking sector.
+                            </p>
+                            <p>
+                                My journey through institutions like <span class="text-primary">Deutsche Bank</span>,
+                                <span class="text-primary">Citibank</span>, and <span class="text-primary">HSBC</span>
+                                has shaped my approach to building robust, resilient, and highly secure payment
+                                infrastructures.
+                            </p>
+                            <p class="border-l-2 border-secondary-gold pl-4 text-slate-300">
+                                Beyond technical architecture, I am deeply committed to <span
+                                    class="text-secondary-gold font-semibold">Building High-Performance Teams</span> and
+                                <span class="text-secondary-gold font-semibold">Mentorship</span>. I believe in
+                                fostering a culture of continuous learning and empowering engineering teams to take
+                                ownership of complex solutions.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-2 flex flex-col">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div
+                                class="glow-card bg-surface-dark p-6 rounded-xl border border-primary/10 group flex flex-col h-full">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <div
+                                        class="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:scale-110 transition-transform flex-shrink-0">
+                                        <span class="material-symbols-outlined">lightbulb</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-slate-100 font-bold text-lg leading-tight">Innovation</h3>
+                                        <span
+                                            class="text-[10px] text-primary/50 uppercase font-bold tracking-tighter">Plum
+                                            Top Talent</span>
+                                    </div>
+                                </div>
+                                <p class="text-slate-300 text-sm font-medium mb-4 italic">The ability to generate novel
+                                    solutions and creative ideas to solve problems.</p>
+                                <ul class="space-y-3 text-slate-400 text-sm leading-relaxed flex-grow">
+                                    <li class="flex items-start gap-2">
+                                        <span
+                                            class="material-symbols-outlined text-primary text-[16px] mt-0.5 mt-0.5">check_circle</span>
+                                        <span>Extraordinary at finding ways to improve work quality—not settling for
+                                            "good enough".</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span
+                                            class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span>
+                                        <span>Strong at working with abstract ideas and developing unconventional
+                                            solutions.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div
+                                class="glow-card bg-surface-dark p-6 rounded-xl border border-primary/10 group flex flex-col h-full">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <div
+                                        class="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:scale-110 transition-transform flex-shrink-0">
+                                        <span class="material-symbols-outlined">balance</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-slate-100 font-bold text-lg leading-tight">Decision Making</h3>
+                                        <span
+                                            class="text-[10px] text-primary/50 uppercase font-bold tracking-tighter">Plum
+                                            Top Talent</span>
+                                    </div>
+                                </div>
+                                <p class="text-slate-300 text-sm font-medium mb-4 italic">The ability to make
+                                    high-quality
+                                    decisions based on limited information.</p>
+                                <ul class="space-y-3 text-slate-400 text-sm leading-relaxed flex-grow">
+                                    <li class="flex items-start gap-2">
+                                        <span
+                                            class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span>
+                                        <span>Exceptional at anticipating problems and choosing forward-thinking
+                                            solutions.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span
+                                            class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span>
+                                        <span>Strong at critically evaluating info and using facts and logic to support
+                                            decisions.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div
+                                class="glow-card bg-surface-dark p-6 rounded-xl border border-primary/10 group flex flex-col h-full">
+                                <div class="flex items-center gap-4 mb-4">
+                                    <div
+                                        class="h-12 w-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary group-hover:scale-110 transition-transform flex-shrink-0">
+                                        <span class="material-symbols-outlined">forum</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-slate-100 font-bold text-lg leading-tight">Communication</h3>
+                                        <span
+                                            class="text-[10px] text-primary/50 uppercase font-bold tracking-tighter">Plum
+                                            Top Talent</span>
+                                    </div>
+                                </div>
+                                <p class="text-slate-300 text-sm font-medium mb-4 italic">The ability to convey ideas
+                                    effectively and identify messages others attempt to convey.</p>
+                                <ul class="space-y-3 text-slate-400 text-sm leading-relaxed flex-grow">
+                                    <li class="flex items-start gap-2">
+                                        <span
+                                            class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span>
+                                        <span>Strong at speaking clearly, conveying positivity, and being
+                                            sociable.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span
+                                            class="material-symbols-outlined text-primary text-[16px] mt-0.5">check_circle</span>
+                                        <span>Very capable of knowing the "right thing" to say and understanding
+                                            reactions.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text-right mt-4 pr-2">
+                            <a href="https://secure.plum.io/en/p/3kG6SvaBz3dm3-aK4rguhQ" target="_blank"
+                                class="text-[10px] text-slate-500 hover:text-primary transition-colors inline-flex items-center gap-1 font-bold uppercase tracking-widest">
+                                Source: Plum Talent Assessment
+                                <span class="material-symbols-outlined text-[14px]">arrow_outward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-accent-dark/30" id="skills">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-slate-100">Technical Expertise</h2>
+                    <div class="h-1 w-20 bg-primary mx-auto mt-4"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="glow-card bg-surface-dark/50 p-6 rounded-xl border border-white/5">
+                        <div class="flex items-center gap-3 mb-6 text-primary">
+                            <span class="material-symbols-outlined">hub</span>
+                            <h3 class="font-bold uppercase tracking-widest text-xs">Architecture</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 bg-accent-dark text-slate-300 text-xs rounded border border-white/10">TOGAF</span>
+                            <span
+                                class="px-3 py-1 bg-accent-dark text-slate-300 text-xs rounded border border-white/10">Microservices</span>
+                            <span
+                                class="px-3 py-1 bg-accent-dark text-slate-300 text-xs rounded border border-white/10">Event
+                                Driven</span>
+                            <span
+                                class="px-3 py-1 bg-accent-dark text-slate-300 text-xs rounded border border-white/10">Serverless</span>
+                        </div>
+                    </div>
+                    <div class="glow-card bg-surface-dark/50 p-6 rounded-xl border border-white/5">
+                        <div class="flex items-center gap-3 mb-6 text-primary">
+                            <span class="material-symbols-outlined">cloud</span>
+                            <h3 class="font-bold uppercase tracking-widest text-xs">Cloud &amp; Devops</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 bg-accent-dark text-slate-300 text-xs rounded border border-white/10">AWS</span>
+                            <span
+                                class="px-3 py-1 bg-accent-dark text-slate-300 text-xs rounded border border-white/10">GCP</span>
+                            <span
+                                class="px-3 py-1 bg-accent-dark text-slate-300 text-xs rounded border border-white/10">Kubernetes</span>
+                            <span
+                                class="px-3 py-1 bg-accent-dark text-slate-300 text-xs rounded border border-white/10">Terraform</span>
+                        </div>
+                    </div>
+                    <div class="glow-card bg-surface-dark/50 p-6 rounded-xl border border-white/5">
+                        <div class="flex items-center gap-3 mb-6 text-primary">
+                            <span class="material-symbols-outlined">terminal</span>
+                            <h3 class="font-bold uppercase tracking-widest text-xs">Languages</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 bg-accent-dark text-slate-300 text-xs rounded border border-white/10">Java</span>
+                            <span
+                                class="px-3 py-1 bg-accent-dark text-slate-300 text-xs rounded border border-white/10">Spring
+                                Boot</span>
+                        </div>
+                    </div>
+                    <div class="glow-card bg-surface-dark/50 p-6 rounded-xl border border-white/5">
+                        <div class="flex items-center gap-3 mb-6 text-primary">
+                            <span class="material-symbols-outlined">payments</span>
+                            <h3 class="font-bold uppercase tracking-widest text-xs">Integration</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3 py-1 bg-accent-dark text-slate-300 text-xs rounded border border-white/10">MuleSoft</span>
+                            <span
+                                class="px-3 py-1 bg-accent-dark text-slate-300 text-xs rounded border border-white/10">SWIFT</span>
+                            <span
+                                class="px-3 py-1 bg-accent-dark text-slate-300 text-xs rounded border border-white/10">ISO
+                                20022</span>
+                            <span
+                                class="px-3 py-1 bg-accent-dark text-slate-300 text-xs rounded border border-white/10">gpi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-24 bg-background-dark" id="experience">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl font-bold text-slate-100 flex items-center gap-4 mb-16">
+                    Professional Journey
+                </h2>
+                <div class="relative pl-8 md:pl-0">
+                    <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-[2px] bg-primary/20 md:-translate-x-1/2">
+                    </div>
+                    <div class="relative mb-16 md:flex md:justify-between items-start group">
+                        <div class="hidden md:block w-[45%]"></div>
+                        <div
+                            class="absolute left-[-32px] md:left-1/2 top-6 w-4 h-4 rounded-full bg-background-dark border-2 border-primary group-hover:bg-primary transition-colors md:-translate-x-1/2 z-10">
+                        </div>
+                        <div
+                            class="w-full md:w-[45%] bg-surface-dark p-6 rounded-xl border border-white/5 hover:border-primary/20 transition-all shadow-xl relative overflow-hidden">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="bg-white p-1.5 rounded w-12 h-12 flex items-center justify-center shrink-0">
+                                        <img alt="Deutsche Bank" class="w-full h-auto object-contain"
+                                            src="images/deutsche-bank-logo.png" />
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-bold text-slate-100">Deutsche Bank</h3>
+                                        <p class="text-xs text-slate-500 font-mono">Jan 2024 - Present</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative pl-6 border-l border-primary/20 space-y-6">
+                                <div class="relative">
+                                    <div
+                                        class="absolute -left-[29px] top-1.5 w-3 h-3 rounded-full bg-surface-dark border-2 border-primary">
+                                    </div>
+                                    <h4 class="text-primary text-sm font-bold uppercase tracking-wider">Director</h4>
+                                    <p class="text-slate-400 text-sm mt-2">Lead Delivery Engineer for Market Risk &
+                                        Treasury Risk function. Managing engineering deliveries for risk assessment and
+                                        financial reporting in Investment Banking.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative mb-16 md:flex md:flex-row-reverse md:justify-between items-start group">
+                        <div class="hidden md:block w-[45%]"></div>
+                        <div
+                            class="absolute left-[-32px] md:left-1/2 top-6 w-4 h-4 rounded-full bg-background-dark border-2 border-primary group-hover:bg-primary transition-colors md:-translate-x-1/2 z-10">
+                        </div>
+                        <div
+                            class="w-full md:w-[45%] bg-surface-dark p-6 rounded-xl border border-white/5 hover:border-primary/20 transition-all shadow-xl">
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="bg-white p-1.5 rounded w-12 h-12 flex items-center justify-center shrink-0">
+                                        <img alt="Citibank" class="w-full h-auto object-contain"
+                                            src="images/citi-logo.png" />
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-bold text-slate-100">Citi</h3>
+                                        <p class="text-xs text-slate-500 font-mono">3 yrs 10 mos</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative pl-6 border-l border-primary/20 space-y-8">
+                                <div class="relative group/role">
+                                    <div
+                                        class="absolute -left-[29px] top-1.5 w-3 h-3 rounded-full bg-surface-dark border-2 border-secondary-gold group-hover/role:bg-secondary-gold transition-colors">
+                                    </div>
+                                    <h4 class="text-slate-200 text-sm font-bold">Senior Vice President</h4>
+                                    <span class="text-xs font-mono text-slate-500 block mb-2">Aug 2023 - Dec
+                                        2024</span>
+                                    <p class="text-slate-400 text-sm">CitiDirect entitlements modernization to OAuth
+                                        2.0. Championed Developer Portal & Sandbox for client onboarding.</p>
+                                </div>
+                                <div class="relative group/role">
+                                    <div
+                                        class="absolute -left-[29px] top-1.5 w-3 h-3 rounded-full bg-surface-dark border-2 border-slate-500 group-hover/role:border-primary transition-colors">
+                                    </div>
+                                    <h4 class="text-slate-200 text-sm font-bold">Vice President
+                                        <a href="https://www.citigroup.com/global/insights/citiconnect-api"
+                                            target="_blank"
+                                            class="text-primary/60 hover:text-primary ml-1 inline-block align-middle"><span
+                                                class="material-symbols-outlined text-[14px]">open_in_new</span></a>
+                                    </h4>
+                                    <span class="text-xs font-mono text-slate-500 block mb-2">Mar 2021 - Jul 2023</span>
+                                    <p class="text-slate-400 text-sm">CitiConnect® API Channel (110+ members, 90+
+                                        countries). Designed award-winning Express Payments platform.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative md:flex md:justify-between items-start group">
+                        <div class="hidden md:block w-[45%]"></div>
+                        <div
+                            class="absolute left-[-32px] md:left-1/2 top-6 w-4 h-4 rounded-full bg-background-dark border-2 border-primary group-hover:bg-primary transition-colors md:-translate-x-1/2 z-10">
+                        </div>
+                        <div
+                            class="w-full md:w-[45%] bg-surface-dark p-6 rounded-xl border border-white/5 hover:border-primary/20 transition-all shadow-xl">
+                            <div class="flex items-center justify-between mb-6">
+                                <div class="flex items-center gap-3">
+                                    <div
+                                        class="bg-white p-1.5 rounded w-12 h-12 flex items-center justify-center shrink-0">
+                                        <img alt="HSBC" class="w-full h-auto object-contain"
+                                            src="images/hsbc-logo.png" />
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-bold text-slate-100">HSBC</h3>
+                                        <p class="text-xs text-slate-500 font-mono">12 yrs 8 mos</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="relative pl-6 border-l border-primary/20 space-y-6">
+                                <div class="relative group/role">
+                                    <div
+                                        class="absolute -left-[29px] top-1.5 w-3 h-3 rounded-full bg-surface-dark border-2 border-secondary-gold group-hover/role:bg-secondary-gold transition-colors">
+                                    </div>
+                                    <h4 class="text-slate-200 text-sm font-bold">API Delivery Lead</h4>
+                                    <span class="text-xs font-mono text-slate-400 block mb-2">Nov 2019 - Oct 2020</span>
+                                    <p class="text-slate-400 text-sm">Retail bank API delivery at HSBC USA, Arlington
+                                        Heights.</p>
+                                </div>
+                                <div class="relative group/role">
+                                    <div
+                                        class="absolute -left-[29px] top-1.5 w-3 h-3 rounded-full bg-surface-dark border-2 border-slate-500 group-hover/role:border-primary transition-colors">
+                                    </div>
+                                    <h4 class="text-slate-200 text-sm font-bold">Senior Architect</h4>
+                                    <span class="text-xs font-mono text-slate-400 block mb-2">Sep 2017 - Oct 2019</span>
+                                    <p class="text-slate-400 text-sm">SWIFT GPI payment tracking for global corporate
+                                        customers. Designed Mobile Banking APIs for HSBC Retail.</p>
+                                </div>
+                                <div class="relative group/role">
+                                    <div
+                                        class="absolute -left-[29px] top-1.5 w-3 h-3 rounded-full bg-surface-dark border-2 border-slate-500 group-hover/role:border-primary transition-colors">
+                                    </div>
+                                    <h4 class="text-slate-200 text-sm font-bold">Engineering Consultant
+                                        <a href="https://www.business.hsbc.ae/en-gb/products/hsbcnet-track-payments"
+                                            target="_blank"
+                                            class="text-primary/60 hover:text-primary ml-1 inline-block align-middle"><span
+                                                class="material-symbols-outlined text-[14px]">open_in_new</span></a>
+                                    </h4>
+                                    <span class="text-xs font-mono text-slate-400 block mb-2">Aug 2017 - Feb 2018</span>
+                                    <p class="text-slate-400 text-sm">HSBCnet Track Payments using MuleSoft & PCF. API
+                                        Governance Lead for corporate banking APIs.</p>
+                                </div>
+                                <div class="relative group/role">
+                                    <div
+                                        class="absolute -left-[29px] top-1.5 w-3 h-3 rounded-full bg-surface-dark border-2 border-slate-500 group-hover/role:border-primary transition-colors">
+                                    </div>
+                                    <h4 class="text-slate-200 text-sm font-bold">Consultant Specialist</h4>
+                                    <span class="text-xs font-mono text-slate-400 block mb-2">Mar 2014 - Aug 2017</span>
+                                    <p class="text-slate-400 text-sm">Beneficiary Management module with OTP & Smart
+                                        Card auth. Exception Management (Lockbox) solutions.</p>
+                                </div>
+                                <div class="relative group/role">
+                                    <div
+                                        class="absolute -left-[29px] top-1.5 w-3 h-3 rounded-full bg-surface-dark border-2 border-slate-500 group-hover/role:border-primary transition-colors">
+                                    </div>
+                                    <h4 class="text-slate-200 text-sm font-bold">Senior Software Engineer</h4>
+                                    <span class="text-xs font-mono text-slate-400 block mb-2">Mar 2011 - Feb 2014</span>
+                                    <p class="text-slate-400 text-sm">Account Opening & Maintenance — built reusable
+                                        document upload module.</p>
+                                </div>
+                                <div class="relative group/role">
+                                    <div
+                                        class="absolute -left-[29px] top-1.5 w-3 h-3 rounded-full bg-surface-dark border-2 border-slate-500 group-hover/role:border-primary transition-colors">
+                                    </div>
+                                    <h4 class="text-slate-200 text-sm font-bold">Onsite Coordinator</h4>
+                                    <span class="text-xs font-mono text-slate-400 block mb-2">Mar 2013 - Dec 2013</span>
+                                    <p class="text-slate-400 text-sm">HSBCnet-Pershing SSO integration using SAML & PKI
+                                        frameworks.</p>
+                                </div>
+                                <div class="relative group/role">
+                                    <div
+                                        class="absolute -left-[29px] top-1.5 w-3 h-3 rounded-full bg-surface-dark border-2 border-slate-500 group-hover/role:border-primary transition-colors">
+                                    </div>
+                                    <h4 class="text-slate-200 text-sm font-bold">Software Engineer</h4>
+                                    <span class="text-xs font-mono text-slate-400 block mb-2">Mar 2008 - Feb 2011</span>
+                                    <p class="text-slate-400 text-sm">Core HSBCnet platform development — payments,
+                                        beneficiaries & corporate banking features.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-24 bg-accent-dark/20" id="projects">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+                    <div>
+                        <h2 class="text-3xl font-bold text-slate-100 flex items-center gap-4">
+                            High-Impact Projects
+                        </h2>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div
+                        class="group relative bg-surface-dark rounded-2xl overflow-hidden border border-white/5 hover:border-primary/30 transition-all shadow-2xl">
+                        <div
+                            class="aspect-video bg-gradient-to-br from-primary/20 to-accent-dark flex items-center justify-center relative">
+                            <div class="absolute inset-0 blueprint-bg opacity-30"></div>
+                            <div
+                                class="bg-white/90 p-4 rounded-xl w-32 h-32 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <img alt="HSBC Logo" class="w-full h-auto object-contain" src="images/hsbc-logo.png" />
+                            </div>
+                            <div class="absolute bottom-4 left-4 flex gap-2">
+                                <span
+                                    class="px-2 py-1 bg-background-dark/80 text-[10px] text-primary rounded font-mono">HSBC</span>
+                                <span
+                                    class="px-2 py-1 bg-background-dark/80 text-[10px] text-primary rounded font-mono">GLOBAL</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3
+                                class="text-2xl font-bold text-slate-100 mb-2 group-hover:text-primary transition-colors">
+                                HSBCnet Track Payments</h3>
+                            <p class="text-slate-400 text-sm mb-6">Designed a real-time tracking engine for high-value
+                                cross-border payments, providing transparency for corporate treasurers globally.</p>
+                            <div class="grid grid-cols-2 gap-4 mb-6">
+                                <div class="bg-accent-dark/40 p-3 rounded border border-primary/10">
+                                    <div class="text-secondary-gold font-bold text-lg">99.99%</div>
+                                    <div class="text-[10px] uppercase text-slate-500 tracking-wider">Uptime Reliability
+                                    </div>
+                                </div>
+                                <div class="bg-accent-dark/40 p-3 rounded border border-primary/10">
+                                    <div class="text-secondary-gold font-bold text-lg">Real-time</div>
+                                    <div class="text-[10px] uppercase text-slate-500 tracking-wider">Visibility Status
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="text-xs font-mono text-slate-500">#Java</span>
+                                <span class="text-xs font-mono text-slate-500">#MuleSoft</span>
+                                <span class="text-xs font-mono text-slate-500">#SWIFT_gpi</span>
+                                <span class="text-xs font-mono text-slate-500">#SpringCloud</span>
+                            </div>
+                            <a href="https://www.business.hsbc.ae/en-gb/products/hsbcnet-track-payments" target="_blank"
+                                class="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary text-sm font-bold rounded-lg hover:bg-primary/20 transition-all border border-primary/20">
+                                <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+                                View Product Page
+                            </a>
+                        </div>
+                    </div>
+                    <div
+                        class="group relative bg-surface-dark rounded-2xl overflow-hidden border border-white/5 hover:border-primary/30 transition-all shadow-2xl">
+                        <div
+                            class="aspect-video bg-gradient-to-br from-secondary-gold/20 to-accent-dark flex items-center justify-center relative">
+                            <div class="absolute inset-0 blueprint-bg opacity-30"></div>
+                            <div
+                                class="bg-white/90 p-4 rounded-xl w-32 h-32 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <img alt="Citi Logo" class="w-full h-auto object-contain" src="images/citi-logo.png" />
+                            </div>
+                            <div class="absolute bottom-4 left-4 flex gap-2">
+                                <span
+                                    class="px-2 py-1 bg-background-dark/80 text-[10px] text-secondary-gold rounded font-mono">CITI</span>
+                                <span
+                                    class="px-2 py-1 bg-background-dark/80 text-[10px] text-secondary-gold rounded font-mono">FINTECH</span>
+                            </div>
+                        </div>
+                        <div class="p-8">
+                            <h3
+                                class="text-2xl font-bold text-slate-100 mb-2 group-hover:text-secondary-gold transition-colors">
+                                CitiConnect Global API</h3>
+                            <p class="text-slate-400 text-sm mb-6">Architected the institutional API ecosystem enabling
+                                automated cash management and liquidity services via secure endpoints.</p>
+                            <div class="grid grid-cols-2 gap-4 mb-6">
+                                <div class="bg-accent-dark/40 p-3 rounded border border-secondary-gold/10">
+                                    <div class="text-primary font-bold text-lg">50M+</div>
+                                    <div class="text-[10px] uppercase text-slate-500 tracking-wider">Daily API Calls
+                                    </div>
+                                </div>
+                                <div class="bg-accent-dark/40 p-3 rounded border border-secondary-gold/10">
+                                    <div class="text-primary font-bold text-lg">Sub-100ms</div>
+                                    <div class="text-[10px] uppercase text-slate-500 tracking-wider">Response Latency
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="text-xs font-mono text-slate-500">#AWS</span>
+                                <span class="text-xs font-mono text-slate-500">#Kubernetes</span>
+                                <span class="text-xs font-mono text-slate-500">#OIDC</span>
+                                <span class="text-xs font-mono text-slate-500">#Microservices</span>
+                            </div>
+                            <a href="https://www.citigroup.com/global/insights/citiconnect-api" target="_blank"
+                                class="inline-flex items-center gap-2 px-4 py-2 bg-secondary-gold/10 text-secondary-gold text-sm font-bold rounded-lg hover:bg-secondary-gold/20 transition-all border border-secondary-gold/20">
+                                <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+                                View Product Page
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-24 bg-background-dark">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-sm font-mono text-primary uppercase tracking-[0.2em] mb-4">Professional
+                        Credentialing</h3>
+                    <h2 class="text-3xl font-bold text-slate-100">Certified Excellence</h2>
+                </div>
+                <div class="relative overflow-hidden w-full pb-8 pt-4">
+                    <div
+                        class="absolute left-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-r from-background-dark to-transparent z-10 pointer-events-none">
+                    </div>
+                    <div
+                        class="absolute right-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-l from-background-dark to-transparent z-10 pointer-events-none">
+                    </div>
+
+                    <div class="flex w-max gap-6 animate-scroll-infinite hover:[animation-play-state:paused]">
+                        <!-- SET 1 -->
+                        <!-- Badge 1 -->
+                        <div
+                            class="shrink-0 w-56 md:w-64 flex flex-col items-center p-6 bg-surface-dark rounded-xl border border-white/5 hover:border-primary/50 transition-colors shadow-lg hover:-translate-y-2 transform duration-300">
+                            <div class="h-24 w-24 md:h-28 md:w-28 mb-4 flex items-center justify-center p-2">
+                                <img src="https://images.credly.com/images/b18154fb-9bd3-47e5-a6f1-554be512947d/image.png"
+                                    alt="Build Infrastructure with Terraform on Google Cloud Skill Badge"
+                                    class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(37,244,195,0.2)]">
+                            </div>
+                            <span class="text-slate-100 font-bold text-sm text-center line-clamp-2 title-min-h">Build
+                                Infrastructure with Terraform</span>
+                            <span class="text-[10px] text-primary mt-2 uppercase tracking-wider font-mono">Google
+                                Cloud</span>
+                        </div>
+                        <!-- Badge 2 -->
+                        <div
+                            class="shrink-0 w-56 md:w-64 flex flex-col items-center p-6 bg-surface-dark rounded-xl border border-white/5 hover:border-primary/50 transition-colors shadow-lg hover:-translate-y-2 transform duration-300">
+                            <div class="h-24 w-24 md:h-28 md:w-28 mb-4 flex items-center justify-center p-2">
+                                <img src="https://images.credly.com/images/eea11cba-2a98-4bbe-bad2-447878dd34a2/image.png"
+                                    alt="Implement Load Balancing on Compute Engine Skill Badge"
+                                    class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(37,244,195,0.2)]">
+                            </div>
+                            <span
+                                class="text-slate-100 font-bold text-sm text-center line-clamp-2 title-min-h">Implement
+                                Load Balancing</span>
+                            <span class="text-[10px] text-primary mt-2 uppercase tracking-wider font-mono">Compute
+                                Engine</span>
+                        </div>
+                        <!-- Badge 3 -->
+                        <div
+                            class="shrink-0 w-56 md:w-64 flex flex-col items-center p-6 bg-surface-dark rounded-xl border border-white/5 hover:border-primary/50 transition-colors shadow-lg hover:-translate-y-2 transform duration-300">
+                            <div class="h-24 w-24 md:h-28 md:w-28 mb-4 flex items-center justify-center p-2">
+                                <img src="https://images.credly.com/images/b126c61c-4781-4f03-9b2b-062963003abf/image.png"
+                                    alt="Develop Your Google Cloud Network Skill Badge"
+                                    class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(37,244,195,0.2)]">
+                            </div>
+                            <span class="text-slate-100 font-bold text-sm text-center line-clamp-2 title-min-h">Develop
+                                Your
+                                GC Network</span>
+                            <span class="text-[10px] text-primary mt-2 uppercase tracking-wider font-mono">Google
+                                Cloud</span>
+                        </div>
+                        <!-- Badge 4 -->
+                        <div
+                            class="shrink-0 w-56 md:w-64 flex flex-col items-center p-6 bg-surface-dark rounded-xl border border-white/5 hover:border-primary/50 transition-colors shadow-lg hover:-translate-y-2 transform duration-300">
+                            <div class="h-24 w-24 md:h-28 md:w-28 mb-4 flex items-center justify-center p-2">
+                                <img src="https://images.credly.com/images/f0388a0c-130f-47cd-8750-d6357e907e58/image.png"
+                                    alt="Deploy Kubernetes Applications on Google Cloud Skill Badge"
+                                    class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(37,244,195,0.2)]">
+                            </div>
+                            <span class="text-slate-100 font-bold text-sm text-center line-clamp-2 title-min-h">Deploy
+                                Kubernetes Apps</span>
+                            <span class="text-[10px] text-primary mt-2 uppercase tracking-wider font-mono">Google
+                                Cloud</span>
+                        </div>
+                        <!-- Badge 5 -->
+                        <div
+                            class="shrink-0 w-56 md:w-64 flex flex-col items-center p-6 bg-surface-dark rounded-xl border border-white/5 hover:border-primary/50 transition-colors shadow-lg hover:-translate-y-2 transform duration-300">
+                            <div class="h-24 w-24 md:h-28 md:w-28 mb-4 flex items-center justify-center p-2">
+                                <img src="https://images.credly.com/images/f1dbea96-0ef4-4857-bb85-3d208a82de10/image.png"
+                                    alt="Implement Cloud Security Fundamentals on Google Cloud Skill Badge"
+                                    class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(37,244,195,0.2)]">
+                            </div>
+                            <span
+                                class="text-slate-100 font-bold text-sm text-center line-clamp-2 title-min-h">Implement
+                                Cloud Security</span>
+                            <span class="text-[10px] text-primary mt-2 uppercase tracking-wider font-mono">Google
+                                Cloud</span>
+                        </div>
+                        <!-- Badge 6 -->
+                        <div
+                            class="shrink-0 w-56 md:w-64 flex flex-col items-center p-6 bg-surface-dark rounded-xl border border-white/5 hover:border-primary/50 transition-colors shadow-lg hover:-translate-y-2 transform duration-300">
+                            <div class="h-24 w-24 md:h-28 md:w-28 mb-4 flex items-center justify-center p-2">
+                                <img src="https://images.credly.com/images/e1131ae3-4a52-4af1-9801-b7853767cf79/image.png"
+                                    alt="Build a Secure Google Cloud Network Skill Badge"
+                                    class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(37,244,195,0.2)]">
+                            </div>
+                            <span class="text-slate-100 font-bold text-sm text-center line-clamp-2 title-min-h">Build
+                                Secure
+                                GC Network</span>
+                            <span class="text-[10px] text-primary mt-2 uppercase tracking-wider font-mono">Google
+                                Cloud</span>
+                        </div>
+                        <!-- Badge 7 -->
+                        <div
+                            class="shrink-0 w-56 md:w-64 flex flex-col items-center p-6 bg-surface-dark rounded-xl border border-white/5 hover:border-primary/50 transition-colors shadow-lg hover:-translate-y-2 transform duration-300">
+                            <div class="h-24 w-24 md:h-28 md:w-28 mb-4 flex items-center justify-center p-2">
+                                <img src="https://images.credly.com/images/42326d44-14ff-4eda-b9c5-7d8f12919253/image.png"
+                                    alt="Set Up an App Dev Environment on Google Cloud Skill Badge"
+                                    class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(37,244,195,0.2)]">
+                            </div>
+                            <span class="text-slate-100 font-bold text-sm text-center line-clamp-2 title-min-h">Set Up
+                                App
+                                Dev Env.</span>
+                            <span class="text-[10px] text-primary mt-2 uppercase tracking-wider font-mono">Google
+                                Cloud</span>
+                        </div>
+                        <!-- Badge 8 -->
+                        <div
+                            class="shrink-0 w-56 md:w-64 flex flex-col items-center p-6 bg-surface-dark rounded-xl border border-white/5 hover:border-primary/50 transition-colors shadow-lg hover:-translate-y-2 transform duration-300">
+                            <div class="h-24 w-24 md:h-28 md:w-28 mb-4 flex items-center justify-center p-2">
+                                <img src="https://images.credly.com/images/24c75efb-9a99-47f7-ab6d-fcd359534c1e/badge-togaf9-certified.png"
+                                    alt="The Open Group Certified: TOGAF® 9 Certified"
+                                    class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(240,192,64,0.3)]">
+                            </div>
+                            <span class="text-slate-100 font-bold text-sm text-center line-clamp-2 title-min-h">TOGAF® 9
+                                Certified</span>
+                            <span class="text-[10px] text-secondary-gold mt-2 uppercase tracking-wider font-mono">The
+                                Open
+                                Group</span>
+                        </div>
+
+                        <!-- SET 2 (Duplicated for infinite scroll illusion) -->
+                        <!-- Badge 1 -->
+                        <div
+                            class="shrink-0 w-56 md:w-64 flex flex-col items-center p-6 bg-surface-dark rounded-xl border border-white/5 hover:border-primary/50 transition-colors shadow-lg hover:-translate-y-2 transform duration-300">
+                            <div class="h-24 w-24 md:h-28 md:w-28 mb-4 flex items-center justify-center p-2">
+                                <img src="https://images.credly.com/images/b18154fb-9bd3-47e5-a6f1-554be512947d/image.png"
+                                    alt="Build Infrastructure with Terraform on Google Cloud Skill Badge"
+                                    class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(37,244,195,0.2)]">
+                            </div>
+                            <span class="text-slate-100 font-bold text-sm text-center line-clamp-2 title-min-h">Build
+                                Infrastructure with Terraform</span>
+                            <span class="text-[10px] text-primary mt-2 uppercase tracking-wider font-mono">Google
+                                Cloud</span>
+                        </div>
+                        <!-- Badge 2 -->
+                        <div
+                            class="shrink-0 w-56 md:w-64 flex flex-col items-center p-6 bg-surface-dark rounded-xl border border-white/5 hover:border-primary/50 transition-colors shadow-lg hover:-translate-y-2 transform duration-300">
+                            <div class="h-24 w-24 md:h-28 md:w-28 mb-4 flex items-center justify-center p-2">
+                                <img src="https://images.credly.com/images/eea11cba-2a98-4bbe-bad2-447878dd34a2/image.png"
+                                    alt="Implement Load Balancing on Compute Engine Skill Badge"
+                                    class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(37,244,195,0.2)]">
+                            </div>
+                            <span
+                                class="text-slate-100 font-bold text-sm text-center line-clamp-2 title-min-h">Implement
+                                Load Balancing</span>
+                            <span class="text-[10px] text-primary mt-2 uppercase tracking-wider font-mono">Compute
+                                Engine</span>
+                        </div>
+                        <!-- Badge 3 -->
+                        <div
+                            class="shrink-0 w-56 md:w-64 flex flex-col items-center p-6 bg-surface-dark rounded-xl border border-white/5 hover:border-primary/50 transition-colors shadow-lg hover:-translate-y-2 transform duration-300">
+                            <div class="h-24 w-24 md:h-28 md:w-28 mb-4 flex items-center justify-center p-2">
+                                <img src="https://images.credly.com/images/b126c61c-4781-4f03-9b2b-062963003abf/image.png"
+                                    alt="Develop Your Google Cloud Network Skill Badge"
+                                    class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(37,244,195,0.2)]">
+                            </div>
+                            <span class="text-slate-100 font-bold text-sm text-center line-clamp-2 title-min-h">Develop
+                                Your
+                                GC Network</span>
+                            <span class="text-[10px] text-primary mt-2 uppercase tracking-wider font-mono">Google
+                                Cloud</span>
+                        </div>
+                        <!-- Badge 4 -->
+                        <div
+                            class="shrink-0 w-56 md:w-64 flex flex-col items-center p-6 bg-surface-dark rounded-xl border border-white/5 hover:border-primary/50 transition-colors shadow-lg hover:-translate-y-2 transform duration-300">
+                            <div class="h-24 w-24 md:h-28 md:w-28 mb-4 flex items-center justify-center p-2">
+                                <img src="https://images.credly.com/images/f0388a0c-130f-47cd-8750-d6357e907e58/image.png"
+                                    alt="Deploy Kubernetes Applications on Google Cloud Skill Badge"
+                                    class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(37,244,195,0.2)]">
+                            </div>
+                            <span class="text-slate-100 font-bold text-sm text-center line-clamp-2 title-min-h">Deploy
+                                Kubernetes Apps</span>
+                            <span class="text-[10px] text-primary mt-2 uppercase tracking-wider font-mono">Google
+                                Cloud</span>
+                        </div>
+                        <!-- Badge 5 -->
+                        <div
+                            class="shrink-0 w-56 md:w-64 flex flex-col items-center p-6 bg-surface-dark rounded-xl border border-white/5 hover:border-primary/50 transition-colors shadow-lg hover:-translate-y-2 transform duration-300">
+                            <div class="h-24 w-24 md:h-28 md:w-28 mb-4 flex items-center justify-center p-2">
+                                <img src="https://images.credly.com/images/f1dbea96-0ef4-4857-bb85-3d208a82de10/image.png"
+                                    alt="Implement Cloud Security Fundamentals on Google Cloud Skill Badge"
+                                    class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(37,244,195,0.2)]">
+                            </div>
+                            <span
+                                class="text-slate-100 font-bold text-sm text-center line-clamp-2 title-min-h">Implement
+                                Cloud Security</span>
+                            <span class="text-[10px] text-primary mt-2 uppercase tracking-wider font-mono">Google
+                                Cloud</span>
+                        </div>
+                        <!-- Badge 6 -->
+                        <div
+                            class="shrink-0 w-56 md:w-64 flex flex-col items-center p-6 bg-surface-dark rounded-xl border border-white/5 hover:border-primary/50 transition-colors shadow-lg hover:-translate-y-2 transform duration-300">
+                            <div class="h-24 w-24 md:h-28 md:w-28 mb-4 flex items-center justify-center p-2">
+                                <img src="https://images.credly.com/images/e1131ae3-4a52-4af1-9801-b7853767cf79/image.png"
+                                    alt="Build a Secure Google Cloud Network Skill Badge"
+                                    class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(37,244,195,0.2)]">
+                            </div>
+                            <span class="text-slate-100 font-bold text-sm text-center line-clamp-2 title-min-h">Build
+                                Secure
+                                GC Network</span>
+                            <span class="text-[10px] text-primary mt-2 uppercase tracking-wider font-mono">Google
+                                Cloud</span>
+                        </div>
+                        <!-- Badge 7 -->
+                        <div
+                            class="shrink-0 w-56 md:w-64 flex flex-col items-center p-6 bg-surface-dark rounded-xl border border-white/5 hover:border-primary/50 transition-colors shadow-lg hover:-translate-y-2 transform duration-300">
+                            <div class="h-24 w-24 md:h-28 md:w-28 mb-4 flex items-center justify-center p-2">
+                                <img src="https://images.credly.com/images/42326d44-14ff-4eda-b9c5-7d8f12919253/image.png"
+                                    alt="Set Up an App Dev Environment on Google Cloud Skill Badge"
+                                    class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(37,244,195,0.2)]">
+                            </div>
+                            <span class="text-slate-100 font-bold text-sm text-center line-clamp-2 title-min-h">Set Up
+                                App
+                                Dev Env.</span>
+                            <span class="text-[10px] text-primary mt-2 uppercase tracking-wider font-mono">Google
+                                Cloud</span>
+                        </div>
+                        <!-- Badge 8 -->
+                        <div
+                            class="shrink-0 w-56 md:w-64 flex flex-col items-center p-6 bg-surface-dark rounded-xl border border-white/5 hover:border-primary/50 transition-colors shadow-lg hover:-translate-y-2 transform duration-300">
+                            <div class="h-24 w-24 md:h-28 md:w-28 mb-4 flex items-center justify-center p-2">
+                                <img src="https://images.credly.com/images/24c75efb-9a99-47f7-ab6d-fcd359534c1e/badge-togaf9-certified.png"
+                                    alt="The Open Group Certified: TOGAF® 9 Certified"
+                                    class="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(240,192,64,0.3)]">
+                            </div>
+                            <span class="text-slate-100 font-bold text-sm text-center line-clamp-2 title-min-h">TOGAF® 9
+                                Certified</span>
+                            <span class="text-[10px] text-secondary-gold mt-2 uppercase tracking-wider font-mono">The
+                                Open
+                                Group</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-24 bg-accent-dark/30 relative">
+            <div class="absolute top-0 right-0 p-24 opacity-5 pointer-events-none">
+                <span class="material-symbols-outlined text-[300px]">format_quote</span>
+            </div>
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <h2 class="text-3xl font-bold text-slate-100 mb-16 text-center">Professional Endorsements</h2>
+                <div class="endorsement-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div
+                        class="endorsement-card glow-card bg-surface-dark p-8 rounded-2xl border border-primary/10 shadow-xl relative flex flex-col h-full transition-all">
+                        <div class="mb-6 flex-grow endorsement-text">
+                            <span class="material-symbols-outlined text-primary text-xl mb-2 block">format_quote</span>
+                            <p class="text-slate-300 italic text-sm leading-relaxed">
+                                "Jayraj has ability to design and implement cutting-edge technological solutions is
+                                truly transformative. It's clear that you approach every challenge with both technical
+                                expertise and a strategic mindset, ensuring that the architecture you create is not only
+                                robust and scalable but also forward-thinking.
+                            </p>
+                            <p class="text-slate-300 italic text-sm leading-relaxed mt-3">
+                                One of the most impressive aspects of your work is the seamless integration of
+                                innovative technologies with existing infrastructure. You manage to blend complex
+                                systems in a way that drives efficiency, enhances performance, and future-proofs the
+                                organization. Your deep understanding of payment domain, technology trends and
+                                technologies allows you to craft architectures that are both flexible and resilient,
+                                setting a strong foundation for long-term success.
+                            </p>
+                            <p class="text-slate-300 italic text-sm leading-relaxed mt-3">
+                                The way you anticipate potential challenges and proactively design solutions
+                                demonstrates a level of foresight and strategic thinking that truly sets you apart. Your
+                                work consistently bridges the gap between business objectives and technical execution,
+                                ensuring that technology becomes a key enabler of organizational growth and
+                                transformation.
+                            </p>
+                            <p class="text-slate-300 italic text-sm leading-relaxed mt-3">
+                                Overall, your contributions as a technology architect are forward-looking, impactful,
+                                and essential to driving innovation. Keep up the outstanding work and continue pushing
+                                the boundaries of what's possible through technology."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
+                            <img alt="Mahesh Salunkhe"
+                                class="h-12 w-12 rounded-full object-cover border border-primary/30"
+                                src="images/mahesh-salunkhe.jpeg" />
+                            <div>
+                                <h4 class="text-slate-100 font-bold text-sm">Mahesh Salunkhe</h4>
+                                <p class="text-[10px] text-slate-500 uppercase tracking-widest leading-tight">Director |
+                                    Head of Engineering</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="endorsement-card glow-card bg-surface-dark p-8 rounded-2xl border border-primary/10 shadow-xl relative flex flex-col h-full transition-all">
+                        <div class="mb-6 flex-grow endorsement-text">
+                            <span class="material-symbols-outlined text-primary text-xl mb-2 block">format_quote</span>
+                            <p class="text-slate-300 italic text-sm leading-relaxed">
+                                "I had the pleasure of working closely with Jayraj, a highly skilled and certified
+                                software architect who consistently impressed me with his technical expertise and
+                                hands-on approach. His attention to detail is exceptional, ensuring that every aspect of
+                                a project is meticulously planned and executed.
+                            </p>
+                            <p class="text-slate-300 italic text-sm leading-relaxed mt-3">
+                                What truly sets Jayraj apart is his ability to manage stakeholder communication
+                                effectively, whether technical or non-technical. He has a unique talent for translating
+                                complex technical concepts into easily understandable terms for all audiences, which has
+                                proven invaluable in various project phases.
+                            </p>
+                            <p class="text-slate-300 italic text-sm leading-relaxed mt-3">
+                                Jayraj's focus on delivery is unparalleled. He is deeply committed to meeting deadlines
+                                without compromising on quality, ensuring timely and reliable project completion. His
+                                hands-on approach to technology ensures that he remains closely involved in every aspect
+                                of development, making him a truly well-rounded professional.
+                            </p>
+                            <p class="text-slate-300 italic text-sm leading-relaxed mt-3">
+                                I highly recommend Jayraj to any team or organization looking for a top-tier architect
+                                who delivers results with precision and excellence."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
+                            <img alt="Sabu Muttasseril"
+                                class="h-12 w-12 rounded-full object-cover border border-primary/30"
+                                src="images/sabu-muttasseril.jpeg" />
+                            <div>
+                                <h4 class="text-slate-100 font-bold text-sm">Sabu Muttasseril</h4>
+                                <p class="text-[10px] text-slate-500 uppercase tracking-widest leading-tight">Managing
+                                    Director, Payments</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="endorsement-card glow-card bg-surface-dark p-8 rounded-2xl border border-primary/10 shadow-xl relative flex flex-col h-full transition-all">
+                        <div class="mb-6 flex-grow endorsement-text">
+                            <span class="material-symbols-outlined text-primary text-xl mb-2 block">format_quote</span>
+                            <p class="text-slate-300 italic text-sm leading-relaxed">
+                                "Jayraj is a natural disruptor. - and I mean that in a good way!!- he constantly looks
+                                to improve, change and evolve his environment. He's passionate about technology but not
+                                for technologies sake. He sees the value that technology can bring to a business and is
+                                relentless in the pursuit of enablement. I have lost count of the amount of times Jay
+                                has taken a problem, broken it down and provided a pragmatic achievable solution, but
+                                what makes him a true gem, is that he will evangelise the idea, embedding it into the
+                                team, resulting in a far more successful outcome."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
+                            <img alt="Joe Dance" class="h-12 w-12 rounded-full object-cover border border-primary/30"
+                                src="images/joe-dance.jpeg" />
+                            <div>
+                                <h4 class="text-slate-100 font-bold text-sm">Joe Dance</h4>
+                                <p class="text-[10px] text-slate-500 uppercase tracking-widest leading-tight">Director,
+                                    Programme Delivery</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="endorsement-card glow-card bg-surface-dark p-8 rounded-2xl border border-primary/10 shadow-xl relative flex flex-col h-full transition-all">
+                        <div class="mb-6 flex-grow endorsement-text">
+                            <span class="material-symbols-outlined text-primary text-xl mb-2 block">format_quote</span>
+                            <p class="text-slate-300 italic text-sm leading-relaxed">
+                                "Jayraj is one of the most technology savvy person i have met who not only have in-depth
+                                knowledge of the modern technologies but also likes to understand and find ways to work
+                                around legacy systems in order to modernize them while ensuring no impact to application
+                                availability and business functionality. Customer centric approach can be seen in his
+                                ways of working and that's why i would be glad to recommend him to be one of the best
+                                technologists in hsbc i have met."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
+                            <img alt="Rishi Sharma" class="h-12 w-12 rounded-full object-cover border border-primary/30"
+                                src="images/rishi-sharma.jpeg" />
+                            <div>
+                                <h4 class="text-slate-100 font-bold text-sm">Rishi Sharma</h4>
+                                <p class="text-[10px] text-slate-500 uppercase tracking-widest leading-tight">Software
+                                    Platform Architect</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="endorsement-card glow-card bg-surface-dark p-8 rounded-2xl border border-primary/10 shadow-xl relative flex flex-col h-full transition-all">
+                        <div class="mb-6 flex-grow endorsement-text">
+                            <span class="material-symbols-outlined text-primary text-xl mb-2 block">format_quote</span>
+                            <p class="text-slate-300 italic text-sm leading-relaxed">
+                                "It's my pleasure able to work with this amazing teammate. Never out of idea, and you
+                                will feel he always be there with a life saving plan. Strive for perfection and ideal is
+                                always his theme and no one will regret to work with, the only regret is we can't have
+                                more opportunities to make more changes together. Best teammate ever!"
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
+                            <img alt="Francis Kwok" class="h-12 w-12 rounded-full object-cover border border-primary/30"
+                                src="images/francis-kwok.jpg" />
+                            <div>
+                                <h4 class="text-slate-100 font-bold text-sm">Francis Kwok</h4>
+                                <p class="text-[10px] text-slate-500 uppercase tracking-widest leading-tight">Sr.
+                                    Program Manager</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="endorsement-card glow-card bg-surface-dark p-8 rounded-2xl border border-primary/10 shadow-xl relative flex flex-col h-full transition-all">
+                        <div class="mb-6 flex-grow endorsement-text">
+                            <span class="material-symbols-outlined text-primary text-xl mb-2 block">format_quote</span>
+                            <p class="text-slate-300 italic text-sm leading-relaxed">
+                                "Jayraj is technically one of the best resource in the organization. Not only he keeps
+                                himself updated with latest technologies but makes sure he has in-depth knowledge about
+                                it. His communication skills are great. His solution proposals are very detailed and
+                                explained to business and engineering very clearly. He is very helpful and focuses on
+                                doing the right thing. Keep up the great work!"
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-4 mt-auto pt-6 border-t border-white/5">
+                            <img alt="Dhananjay Potey"
+                                class="h-12 w-12 rounded-full object-cover border border-primary/30"
+                                src="images/dhananjay-potey.jpeg" />
+                            <div>
+                                <h4 class="text-slate-100 font-bold text-sm">Dhananjay Potey</h4>
+                                <p class="text-[10px] text-slate-500 uppercase tracking-widest leading-tight">Principal
+                                    Solutions Architect</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-12 bg-accent-dark/20 border-y border-white/5">
+            <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-100 mb-2">Architectural Portfolio &amp; Experience</h3>
+                    <p class="text-slate-400">Download the detailed resume or view the executive summary.</p>
+                </div>
+                <div class="flex flex-wrap gap-4">
+                    <a href="documents/Resume_Jayraj_2025.pdf" target="_blank"
+                        class="px-6 py-3 bg-primary text-background-dark font-bold rounded hover:bg-white hover:text-background-dark transition-all flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">download</span>
+                        Download Full Resume
+                    </a>
+                    <a href="documents/Executive_summary.pdf" target="_blank"
+                        class="px-6 py-3 border border-slate-500 text-slate-300 font-bold rounded hover:border-primary hover:text-primary transition-all flex items-center gap-2">
+                        <span class="material-symbols-outlined text-sm">download</span>
+                        Download Executive Summary
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="py-24 bg-accent-dark/20" id="contact">
+            <div class="max-w-7xl mx-auto px-6">
+                <!-- Header -->
+                <div class="text-center mb-16 space-y-4 max-w-2xl mx-auto">
+                    <h2 class="text-4xl lg:text-5xl font-black tracking-tight text-white">
+                        Let's <span class="text-primary">Connect</span>
+                    </h2>
+                    <p class="text-slate-400 text-lg leading-relaxed">
+                        Currently open to strategic partnerships, architectural consulting, and innovative enterprise
+                        projects.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full items-start">
+                    <!-- Contact Form Card -->
+                    <div
+                        class="lg:col-span-7 bg-surface-dark/80 backdrop-blur-xl border border-white/5 rounded-2xl p-8 lg:p-10 shadow-2xl">
+                        <form class="space-y-6" id="contact-form" action="https://formspree.io/f/xlgwpzqv"
+                            method="POST">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="group relative">
+                                    <label
+                                        class="block text-xs font-bold uppercase tracking-widest text-primary mb-2 opacity-70 group-focus-within:opacity-100 transition-opacity">Full
+                                        Name</label>
+                                    <input
+                                        class="w-full bg-accent-dark/30 border-b-2 border-white/10 border-x-0 border-t-0 focus:border-primary focus:ring-0 text-white placeholder:text-slate-600 px-0 py-3 transition-all duration-300"
+                                        placeholder="John Doe" type="text" name="name" required />
+                                </div>
+                                <div class="group relative">
+                                    <label
+                                        class="block text-xs font-bold uppercase tracking-widest text-primary mb-2 opacity-70 group-focus-within:opacity-100 transition-opacity">Email
+                                        Address</label>
+                                    <input
+                                        class="w-full bg-accent-dark/30 border-b-2 border-white/10 border-x-0 border-t-0 focus:border-primary focus:ring-0 text-white placeholder:text-slate-600 px-0 py-3 transition-all duration-300"
+                                        placeholder="you@example.com" type="email" name="email" required />
+                                </div>
+                            </div>
+                            <div class="group relative">
+                                <label
+                                    class="block text-xs font-bold uppercase tracking-widest text-primary mb-2 opacity-70 group-focus-within:opacity-100 transition-opacity">Subject</label>
+                                <input
+                                    class="w-full bg-accent-dark/30 border-b-2 border-white/10 border-x-0 border-t-0 focus:border-primary focus:ring-0 text-white placeholder:text-slate-600 px-0 py-3 transition-all duration-300"
+                                    placeholder="Strategic Partnership" type="text" name="subject" required />
+                            </div>
+                            <div class="group relative">
+                                <label
+                                    class="block text-xs font-bold uppercase tracking-widest text-primary mb-2 opacity-70 group-focus-within:opacity-100 transition-opacity">Message</label>
+                                <textarea
+                                    class="w-full bg-accent-dark/30 border-b-2 border-white/10 border-x-0 border-t-0 focus:border-primary focus:ring-0 text-white placeholder:text-slate-600 px-0 py-3 transition-all duration-300 resize-none"
+                                    placeholder="Tell me about your project..." rows="5" name="message"
+                                    required></textarea>
+                            </div>
+                            <div class="pt-4 flex flex-col items-start gap-4">
+                                <button
+                                    class="w-full md:w-auto px-10 py-4 bg-primary text-background-dark font-bold text-sm uppercase tracking-widest rounded-lg hover:shadow-[0_0_20px_rgba(37,244,195,0.4)] hover:-translate-y-0.5 transition-all duration-300"
+                                    type="submit">
+                                    Send Message
+                                </button>
+                                <div class="flex items-center gap-2 text-slate-500 text-sm">
+                                    <span class="material-symbols-outlined text-sm text-secondary-gold">schedule</span>
+                                    <span>I typically respond within 24 hours</span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Side Panel: Contact Info -->
+                    <div class="lg:col-span-5 space-y-8">
+                        <div
+                            class="bg-surface-dark/80 backdrop-blur-xl border border-white/5 rounded-2xl p-8 shadow-xl">
+                            <h3 class="text-xl font-bold text-white mb-8 border-l-4 border-secondary-gold pl-4">
+                                Contact Information</h3>
+                            <div class="space-y-8">
+                                <div class="flex items-start gap-5 group">
+                                    <div
+                                        class="size-12 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20 text-primary group-hover:bg-primary group-hover:text-background-dark transition-all duration-300 shadow-lg shadow-primary/5">
+                                        <span class="material-symbols-outlined">mail</span>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Email</p>
+                                        <a class="text-white hover:text-primary transition-colors font-medium"
+                                            href="mailto:jayraj.miniyar@gmail.com">jayraj.miniyar@gmail.com</a>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-5 group">
+                                    <div
+                                        class="size-12 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20 text-primary group-hover:bg-primary group-hover:text-background-dark transition-all duration-300 shadow-lg shadow-primary/5">
+                                        <span class="material-symbols-outlined">location_on</span>
+                                    </div>
+                                    <div class="space-y-1">
+                                        <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Location
+                                        </p>
+                                        <p class="text-white font-medium">Pune, India</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-5 group">
+                                    <div
+                                        class="size-12 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20 text-primary group-hover:bg-primary group-hover:text-background-dark transition-all duration-300 shadow-lg shadow-primary/5">
+                                        <span class="material-symbols-outlined">share</span>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Social
+                                            Presence</p>
+                                        <div class="flex items-center gap-4">
+                                            <a class="p-2 rounded-lg bg-accent-dark/40 border border-white/5 text-slate-400 hover:text-primary hover:border-primary/50 transition-all"
+                                                href="https://www.linkedin.com/in/jminiyar/" target="_blank"
+                                                title="LinkedIn">
+                                                <svg class="size-5 fill-current" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
+                                                    </path>
+                                                </svg>
+                                            </a>
+                                            <a class="p-2 rounded-lg bg-accent-dark/40 border border-white/5 text-slate-400 hover:text-primary hover:border-primary/50 transition-all"
+                                                href="https://github.com/jayy2kok" target="_blank" title="GitHub">
+                                                <svg class="size-5 fill-current" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                                                    </path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Strategic Note -->
+                        <div
+                            class="bg-secondary-gold/5 border border-secondary-gold/20 rounded-2xl p-6 relative overflow-hidden group">
+                            <div
+                                class="absolute -right-4 -bottom-4 size-24 bg-secondary-gold/10 rounded-full blur-2xl group-hover:bg-secondary-gold/20 transition-all duration-700">
+                            </div>
+                            <p class="text-secondary-gold text-sm font-semibold mb-2 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-sm">verified</span>
+                                Professional Note
+                            </p>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                If it involves untangling legacy spaghetti, orchestrating payment rails across 90+
+                                countries, or architecting platforms that move billions — you have my attention.
+                                Currently seeking high-impact architecture roles in corporate banking & payments. Drop
+                                the challenge in the subject line; I'll bring the blueprint.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-background-dark border-t border-white/5 py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div>
+                <div class="flex items-center gap-3 mb-2">
+                    <div
+                        class="h-8 w-8 bg-primary/10 rounded border border-primary/30 flex items-center justify-center text-primary font-bold text-sm">
+                        JM</div>
+                    <span class="text-slate-100 font-bold">Jayraj Miniyar</span>
+                </div>
+                <p class="text-slate-500 text-sm">Enterprise Architect | Global Payments Specialist</p>
+            </div>
+            <div class="flex flex-col items-center md:items-end gap-2">
+                <div class="text-slate-400 text-sm flex items-center gap-4">
+                    <span>MCA</span>
+                    <span class="h-1 w-1 bg-slate-700 rounded-full"></span>
+                    <span>PG-DAC (C-DAC)</span>
+                </div>
+                <p class="text-slate-600 text-[10px] uppercase tracking-widest mt-2">© 2024 Jayraj Miniyar. All rights
+                    reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dynamic Experience Counter
+        function calculateExperience() {
+            const startDate = new Date(2008, 2, 1);
+            const today = new Date();
+            let years = today.getFullYear() - startDate.getFullYear();
+            let months = today.getMonth() - startDate.getMonth();
+            if (months < 0 || (months === 0 && today.getDate() < startDate.getDate())) {
+                years--;
+            }
+            document.getElementById('experience-counter').textContent = years + '+';
+        }
+        calculateExperience();
+
+        // Endorsement Click-to-Expand
+        (function () {
+            const grid = document.querySelector('.endorsement-grid');
+            const cards = document.querySelectorAll('.endorsement-card');
+
+            function collapseAll() {
+                cards.forEach(c => c.classList.remove('expanded'));
+                if (grid) grid.classList.remove('has-expanded');
+            }
+
+            cards.forEach(card => {
+                card.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const isExpanded = this.classList.contains('expanded');
+                    collapseAll();
+                    if (!isExpanded) {
+                        this.classList.add('expanded');
+                        if (grid) grid.classList.add('has-expanded');
+                    }
+                });
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!e.target.closest('.endorsement-card')) {
+                    collapseAll();
+                }
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') collapseAll();
+            });
+        })();
+    </script>
+</body>
+
+</html>

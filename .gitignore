@@ -1,0 +1,9 @@
+# Dev files
+stitch_contact.html
+stitch_portfolio.html
+stitch_screenshot.png
+credly.html
+get_badges.py
+*.pyc
+__pycache__/
+.gemini/
