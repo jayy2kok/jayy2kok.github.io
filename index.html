@@ -215,9 +215,27 @@
                     Get In Touch
                 </a>
             </div>
-            <button class="md:hidden text-primary">
+            <button id="mobile-menu-btn" class="md:hidden text-primary"
+                onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
                 <span class="material-symbols-outlined">menu</span>
             </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-surface-dark/95 backdrop-blur-lg border-t border-primary/10">
+            <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-4">
+                <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors py-2 border-b border-white/5"
+                    href="#about" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors py-2 border-b border-white/5"
+                    href="#skills" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Skills</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors py-2 border-b border-white/5"
+                    href="#experience"
+                    onclick="document.getElementById('mobile-menu').classList.add('hidden')">Experience</a>
+                <a class="text-sm font-medium text-slate-300 hover:text-primary transition-colors py-2 border-b border-white/5"
+                    href="#projects"
+                    onclick="document.getElementById('mobile-menu').classList.add('hidden')">Projects</a>
+                <a class="px-5 py-2 bg-primary/10 border border-primary text-primary text-sm font-bold rounded hover:bg-primary hover:text-background-dark transition-all duration-300 text-center mt-2"
+                    href="#contact" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Get In
+                    Touch</a>
+            </div>
         </div>
     </nav>
     <main>
@@ -237,7 +255,8 @@
                         Enterprise Architect &amp; Technology Leader
                     </h2>
                     <p class="text-lg text-slate-400 max-w-xl leading-relaxed mb-10">
-                        Over 18 years of experience in architecting global financial systems for top-tier investment
+                        Over <span id="hero-experience-years"></span> years of experience in architecting global
+                        financial systems for top-tier investment
                         banks. Specializing in high-throughput payment processing and scalable API platforms.
                     </p>
                     <div class="flex flex-wrap gap-4">
@@ -534,7 +553,7 @@
                                     </div>
                                     <div>
                                         <h3 class="text-xl font-bold text-slate-100">Deutsche Bank</h3>
-                                        <p class="text-xs text-slate-500 font-mono">Jan 2024 - Present</p>
+                                        <p class="text-xs text-slate-500 font-mono">Jan 2025 - Present</p>
                                     </div>
                                 </div>
                             </div>
@@ -1425,6 +1444,7 @@
                 years--;
             }
             document.getElementById('experience-counter').textContent = years + '+';
+            document.getElementById('hero-experience-years').textContent = years;
         }
         calculateExperience();
 
