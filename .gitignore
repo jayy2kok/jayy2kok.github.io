@@ -7,3 +7,6 @@ get_badges.py
 *.pyc
 __pycache__/
 .gemini/
+
+# Tailwind build tooling (dev-only, not needed for GitHub Pages)
+node_modules/

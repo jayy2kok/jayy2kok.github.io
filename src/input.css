@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0a192f;
+}
+
+.blueprint-bg {
+    background-image:
+        linear-gradient(rgba(37, 244, 195, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 244, 195, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+}
+
+.glass-nav {
+    background: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(37, 244, 195, 0.1);
+}
+
+.text-glow {
+    text-shadow: 0 0 10px rgba(37, 244, 195, 0.3);
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari and Opera */
+}
+
+.title-min-h {
+    min-height: 2.5rem;
+}
+
+@keyframes scroll-infinite {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 0.75rem));
+    }
+}
+
+.animate-scroll-infinite {
+    animation: scroll-infinite 25s linear infinite;
+}
+
+.snap-x::-webkit-scrollbar {
+    height: 8px;
+}
+
+.snap-x::-webkit-scrollbar-track {
+    background: #112240;
+}
+
+.snap-x::-webkit-scrollbar-thumb {
+    background: #25f4c3;
+    border-radius: 4px;
+}
+
+.glow-card {
+    position: relative;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.glow-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -10px rgba(37, 244, 195, 0.4);
+    border-color: rgba(37, 244, 195, 0.4) !important;
+}
+
+.glow-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    opacity: 0;
+    background: linear-gradient(180deg, #25f4c3, #f0c040);
+    transition: all 0.4s ease;
+    z-index: 10;
+}
+
+.glow-card:hover::before {
+    opacity: 1;
+}
+
+.endorsement-text {
+    max-height: 180px;
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.5s ease;
+}
+
+.endorsement-text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(transparent, #1a1f2e);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.endorsement-card {
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.endorsement-card.expanded {
+    transform: scale(1.05);
+    box-shadow: 0 25px 60px -10px rgba(37, 244, 195, 0.4), 0 0 0 2px rgba(37, 244, 195, 0.5);
+    border-color: rgba(37, 244, 195, 0.5) !important;
+    background: #1e2a3a;
+}
+
+.endorsement-card.expanded .endorsement-text {
+    max-height: 800px;
+}
+
+.endorsement-card.expanded .endorsement-text::after {
+    opacity: 0;
+}
+
+/* Dim sibling cards when one is expanded */
+.endorsement-grid.has-expanded .endorsement-card:not(.expanded) {
+    opacity: 0.15;
+    filter: blur(1px);
+    transform: scale(0.97);
+}
+
+.endorsement-card .click-hint {
+    transition: opacity 0.3s ease;
+}
+
+.endorsement-card.expanded .click-hint {
+    opacity: 0;
+}
